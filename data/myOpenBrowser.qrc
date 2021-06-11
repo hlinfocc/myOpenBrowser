@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/">
+        <file>AppLogoColor.png</file>
+        <file>ninja.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file alias="dialog-error.png">images/dialog-error.png</file>
+        <file alias="edit-clear.png">images/edit-clear.png</file>
+        <file alias="go-bottom.png">images/go-bottom.png</file>
+        <file alias="go-next.png">images/go-next.png</file>
+        <file alias="go-previous.png">images/go-previous.png</file>
+        <file alias="process-stop.png">images/process-stop.png</file>
+        <file alias="text-html.png">images/text-html.png</file>
+        <file alias="view-refresh.png">images/view-refresh.png</file>
+    </qresource>
+</RCC>
