@@ -166,7 +166,11 @@ void TabWidget::setupView(WebView *webView)
     connect(webView, &QWebEngineView::titleChanged, [this, webView](const QString &title) {
         int index = indexOf(webView);
         if (index != -1) {
-            setTabText(index, title);
+            QString subTitle = title;
+            if(title.length()>8){
+                subTitle = title.left(8);
+            }
+            setTabText(index, subTitle);
             setTabToolTip(index, title);
         }
         if (currentIndex() == index)
@@ -249,15 +253,16 @@ void TabWidget::closeOtherTabs(int index)
 
 void TabWidget::closeTab(int index)
 {
+    int tabCount = count();
     if (WebView *view = webView(index)) {
         bool hasFocus = view->hasFocus();
-        if (count() > 1){
+        if (tabCount > 1){
             removeTab(index);
         }
-        if (hasFocus && count() > 0){
+        if (hasFocus && tabCount > 0){
             currentWebView()->setFocus();
         }
-        if (count() == 1){
+        if (tabCount == 1){
             //createTab();
             /*QMessageBox box(QMessageBox::Warning,tr("Warm Prompt"),tr("This is the last tab. Are you sure you want to close it?"));
                 box.setStandardButtons(QMessageBox::Cancel|QMessageBox::Ok);

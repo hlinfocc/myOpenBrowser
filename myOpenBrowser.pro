@@ -42,7 +42,7 @@ TRANSLATIONS += \
     i18n/en.ts \
     i18n/zh_CN.ts
 
-RC_ICONS = data/AppLogoColor.ico
+RC_ICONS = data/AppLogo.ico
 
 # install
 target.path = $$[QT_INSTALL_EXAMPLES]/myOpenBrowser

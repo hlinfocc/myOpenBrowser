@@ -92,6 +92,7 @@ private slots:
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     void handleFindTextFinished(const QWebEngineFindTextResult &result);
 #endif
+    void about();
 
 private:
     QMenu *createFileMenu(TabWidget *tabWidget);
@@ -114,6 +115,7 @@ private:
     QLineEdit *m_urlLineEdit;
     QAction *m_favAction;
     QString m_lastSearch;
+    QToolBar *toolBar;
 };
 
 #endif // BROWSERWINDOW_H

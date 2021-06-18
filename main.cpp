@@ -75,7 +75,7 @@ int main(int argc, char **argv)
     QCoreApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
 
     QApplication app(argc, argv);
-    app.setWindowIcon(QIcon(QStringLiteral(":AppLogoColor.png")));
+    app.setWindowIcon(QIcon(QStringLiteral(":AppLogo.png")));
 
     QLocale locale;
     QTranslator *translator = new QTranslator();
@@ -97,8 +97,7 @@ int main(int argc, char **argv)
     BrowserWindow *window = browser.createWindow();
     const QRect availableGeometry = window->screen()->availableGeometry();
     window->resize(availableGeometry.width() / 2, (availableGeometry.height() * 2) / 3);
-    window->move((availableGeometry.width() - window->width()) / 2,
-            (availableGeometry.height() - window->height()) / 2);
+    window->move((availableGeometry.width() - window->width()) / 2,(availableGeometry.height() - window->height()) / 2);
     //window->resize(1024, 768);
     window->showMaximized();
 //    window->showFullScreen();

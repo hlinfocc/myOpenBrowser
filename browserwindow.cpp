@@ -92,6 +92,7 @@ BrowserWindow::BrowserWindow(Browser *browser, QWebEngineProfile *profile, bool 
         m_progressBar = new QProgressBar(this);
 
         QToolBar *toolbar = createToolBar();
+        toolBar = toolbar;
         addToolBar(toolbar);
         menuBar()->addMenu(createFileMenu(m_tabWidget));
         menuBar()->addMenu(createEditMenu());
@@ -347,7 +348,9 @@ QMenu *BrowserWindow::createWindowMenu(TabWidget *tabWidget)
 QMenu *BrowserWindow::createHelpMenu()
 {
     QMenu *helpMenu = new QMenu(tr("&Help"));
-    helpMenu->addAction(tr("About &Qt"), qApp, QApplication::aboutQt);
+    QAction *aboutAction = helpMenu->addAction(tr("&About"));
+    aboutAction->setShortcuts(QKeySequence::HelpContents);
+    connect(aboutAction, &QAction::triggered, this, &BrowserWindow::about);
     return helpMenu;
 }
 
@@ -556,18 +559,25 @@ void BrowserWindow::handleDevToolsRequested(QWebEnginePage *source)
 void BrowserWindow::keyPressEvent(QKeyEvent *keys)
 {
     //qDebug() << "keyPressEventValue:" << keys->key();
+
     switch (keys->key()) {
         case Qt::Key_F11:
             if(this->isFullScreen())
             {
 //                this->setWindowFlags(Qt::SubWindow);
                 this->showMaximized();
+                toolBar->show();
+                menuBar()->show();
+                statusBar()->show();
             }else{
                 this->showFullScreen();
+                toolBar->close();
+                menuBar()->hide();
+                statusBar()->close();
             }
             break;
         case Qt::Key_Escape:
-            QMessageBox::about(NULL,"Key","ESC");
+            //QMessageBox::about(NULL,"Key","ESC");
            break;
     }
 }
@@ -584,3 +594,10 @@ void BrowserWindow::handleFindTextFinished(const QWebEngineFindTextResult &resul
     }
 }
 #endif
+
+void BrowserWindow::about()
+{
+    QMessageBox::about(this, tr("About"), tr("This openBrowser is simple browser project based on Qt webengine. "
+            "It has a multi-tab page function, "
+            "Mainly a dedicated client for web projects to solve browser compatibility issues."));
+}

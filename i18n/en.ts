@@ -4,262 +4,272 @@
 <context>
     <name>BrowserWindow</name>
     <message>
-        <location filename="../browserwindow.cpp" line="161"/>
+        <location filename="../browserwindow.cpp" line="162"/>
         <source>&amp;File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="162"/>
+        <location filename="../browserwindow.cpp" line="163"/>
         <source>&amp;New Window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="163"/>
+        <location filename="../browserwindow.cpp" line="164"/>
         <source>New &amp;Incognito Window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="163"/>
+        <location filename="../browserwindow.cpp" line="164"/>
         <source>Ctrl+Shift+N</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="165"/>
+        <location filename="../browserwindow.cpp" line="166"/>
         <source>New &amp;Tab</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="173"/>
+        <location filename="../browserwindow.cpp" line="174"/>
         <source>&amp;Open File...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="176"/>
+        <location filename="../browserwindow.cpp" line="177"/>
         <source>&amp;Close Tab</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="183"/>
+        <location filename="../browserwindow.cpp" line="184"/>
         <source>&amp;Print</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="190"/>
+        <location filename="../browserwindow.cpp" line="191"/>
         <source>&amp;Print to PDF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="191"/>
+        <location filename="../browserwindow.cpp" line="192"/>
         <source>Ctrl+Shift+P</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="197"/>
-        <location filename="../browserwindow.cpp" line="204"/>
+        <location filename="../browserwindow.cpp" line="198"/>
+        <location filename="../browserwindow.cpp" line="205"/>
         <source>&amp;Quit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="206"/>
+        <location filename="../browserwindow.cpp" line="207"/>
         <source>&amp;Close Window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="213"/>
+        <location filename="../browserwindow.cpp" line="214"/>
         <source>&amp;Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="214"/>
+        <location filename="../browserwindow.cpp" line="215"/>
         <source>&amp;Find</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="218"/>
+        <location filename="../browserwindow.cpp" line="219"/>
         <source>Find &amp;Next</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="226"/>
+        <location filename="../browserwindow.cpp" line="227"/>
         <source>Find &amp;Previous</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="239"/>
+        <location filename="../browserwindow.cpp" line="240"/>
         <source>&amp;View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="240"/>
+        <location filename="../browserwindow.cpp" line="241"/>
         <source>&amp;Stop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="249"/>
+        <location filename="../browserwindow.cpp" line="250"/>
         <source>Reload Page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="255"/>
+        <location filename="../browserwindow.cpp" line="256"/>
         <source>Zoom &amp;In</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="262"/>
+        <location filename="../browserwindow.cpp" line="263"/>
         <source>Zoom &amp;Out</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="269"/>
+        <location filename="../browserwindow.cpp" line="270"/>
         <source>Reset &amp;Zoom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="278"/>
-        <location filename="../browserwindow.cpp" line="285"/>
+        <location filename="../browserwindow.cpp" line="279"/>
+        <location filename="../browserwindow.cpp" line="286"/>
         <source>Hide Toolbar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="279"/>
+        <location filename="../browserwindow.cpp" line="280"/>
         <source>Ctrl+|</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="282"/>
+        <location filename="../browserwindow.cpp" line="283"/>
         <source>Show Toolbar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="291"/>
-        <location filename="../browserwindow.cpp" line="298"/>
+        <location filename="../browserwindow.cpp" line="292"/>
+        <location filename="../browserwindow.cpp" line="299"/>
         <source>Hide Status Bar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="292"/>
+        <location filename="../browserwindow.cpp" line="293"/>
         <source>Ctrl+/</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="295"/>
+        <location filename="../browserwindow.cpp" line="296"/>
         <source>Show Status Bar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="308"/>
+        <location filename="../browserwindow.cpp" line="309"/>
         <source>&amp;Window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="310"/>
+        <location filename="../browserwindow.cpp" line="311"/>
         <source>Show Next Tab</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="319"/>
+        <location filename="../browserwindow.cpp" line="320"/>
         <source>Show Previous Tab</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="349"/>
+        <location filename="../browserwindow.cpp" line="350"/>
         <source>&amp;Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="350"/>
-        <source>About &amp;Qt</source>
+        <location filename="../browserwindow.cpp" line="351"/>
+        <source>&amp;About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="356"/>
+        <location filename="../browserwindow.cpp" line="600"/>
+        <source>About</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../browserwindow.cpp" line="600"/>
+        <source>This openBrowser is simple browser project based on Qt webengine. It has a multi-tab page function, Mainly a dedicated client for web projects to solve browser compatibility issues.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../browserwindow.cpp" line="359"/>
         <source>Navigation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="374"/>
+        <location filename="../browserwindow.cpp" line="377"/>
         <source>Go back in history</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="392"/>
+        <location filename="../browserwindow.cpp" line="395"/>
         <source>Go forward in history</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="412"/>
+        <location filename="../browserwindow.cpp" line="415"/>
         <source>Show downloads</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="444"/>
+        <location filename="../browserwindow.cpp" line="447"/>
         <source>Qt Simple Browser (Incognito)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="445"/>
+        <location filename="../browserwindow.cpp" line="448"/>
         <source>Qt Simple Browser</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="467"/>
+        <location filename="../browserwindow.cpp" line="470"/>
         <source>Open Web Resource</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="468"/>
+        <location filename="../browserwindow.cpp" line="471"/>
         <source>Web Resources (*.html *.htm *.svg *.png *.gif *.svgz);;All files (*.*)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="479"/>
+        <location filename="../browserwindow.cpp" line="482"/>
         <source>Find</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="480"/>
+        <location filename="../browserwindow.cpp" line="483"/>
         <source>Find:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="489"/>
-        <location filename="../browserwindow.cpp" line="579"/>
+        <location filename="../browserwindow.cpp" line="492"/>
+        <location filename="../browserwindow.cpp" line="589"/>
         <source>&quot;%1&quot; not found.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="498"/>
+        <location filename="../browserwindow.cpp" line="501"/>
         <source>Confirm close</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="498"/>
+        <location filename="../browserwindow.cpp" line="501"/>
         <source>Are you sure you want to close the window ?
 There are %1 tabs open.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="500"/>
+        <location filename="../browserwindow.cpp" line="503"/>
         <source>Yes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="501"/>
+        <location filename="../browserwindow.cpp" line="504"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="530"/>
+        <location filename="../browserwindow.cpp" line="533"/>
         <source>Stop loading the current page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="535"/>
+        <location filename="../browserwindow.cpp" line="538"/>
         <source>Reload the current page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../browserwindow.cpp" line="581"/>
+        <location filename="../browserwindow.cpp" line="591"/>
         <source>&quot;%1&quot; found: %2/%3</source>
         <translation type="unfinished"></translation>
     </message>
@@ -446,17 +456,17 @@ Do you wish to override the security check and continue ?   </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabwidget.cpp" line="272"/>
+        <location filename="../tabwidget.cpp" line="273"/>
         <source>Warm Prompt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabwidget.cpp" line="272"/>
+        <location filename="../tabwidget.cpp" line="273"/>
         <source>This is the last tab. It can&apos;t be closed anymore.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabwidget.cpp" line="335"/>
+        <location filename="../tabwidget.cpp" line="336"/>
         <source>Export PDF</source>
         <translation type="unfinished"></translation>
     </message>
@@ -555,93 +565,102 @@ Do you wish to override the security check and continue ?   </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../webview.cpp" line="102"/>
-        <source>Render process exited with code: %1
-Do you want to reload the page ?</source>
+        <location filename="../webview.cpp" line="101"/>
+        <source>Render process exited with code: %1 ,Do you want to reload the page ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../webview.cpp" line="113"/>
-        <source>Forward</source>
+        <location filename="../webview.cpp" line="103"/>
+        <source>Yes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../webview.cpp" line="114"/>
-        <source>Back</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../webview.cpp" line="115"/>
-        <source>Reload</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../webview.cpp" line="116"/>
-        <source>Stop</source>
+        <location filename="../webview.cpp" line="104"/>
+        <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../webview.cpp" line="117"/>
-        <source>SavePage</source>
+        <source>Forward</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../webview.cpp" line="118"/>
-        <source>Copy</source>
+        <source>Back</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../webview.cpp" line="119"/>
-        <source>SelectAll</source>
+        <source>Reload</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../webview.cpp" line="120"/>
-        <source>OpenLinkInNewTab</source>
+        <source>Stop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../webview.cpp" line="121"/>
-        <source>OpenLinkInNewWindow</source>
+        <source>SavePage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../webview.cpp" line="122"/>
-        <source>CopyImageUrlToClipboard</source>
+        <source>Copy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../webview.cpp" line="123"/>
-        <source>CopyImageToClipboard</source>
+        <source>SelectAll</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../webview.cpp" line="124"/>
-        <source>DownloadImageToDisk</source>
+        <source>OpenLinkInNewTab</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../webview.cpp" line="125"/>
-        <source>CopyLinkToClipboard</source>
+        <source>OpenLinkInNewWindow</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../webview.cpp" line="126"/>
-        <source>DownloadLinkToDisk</source>
+        <source>CopyImageUrlToClipboard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../webview.cpp" line="127"/>
+        <source>CopyImageToClipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../webview.cpp" line="128"/>
+        <source>DownloadImageToDisk</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../webview.cpp" line="129"/>
+        <source>CopyLinkToClipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../webview.cpp" line="130"/>
+        <source>DownloadLinkToDisk</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../webview.cpp" line="131"/>
         <source>ViewSource</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../webview.cpp" line="205"/>
+        <location filename="../webview.cpp" line="209"/>
         <source>Open inspector in new window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../webview.cpp" line="211"/>
+        <location filename="../webview.cpp" line="215"/>
         <source>Inspect element</source>
         <translation type="unfinished"></translation>
     </message>
