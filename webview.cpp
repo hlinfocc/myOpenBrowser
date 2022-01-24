@@ -217,3 +217,4 @@ void WebView::contextMenuEvent(QContextMenuEvent *event)
     menu->popup(event->globalPos());
 }
 
+

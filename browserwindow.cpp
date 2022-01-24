@@ -579,6 +579,9 @@ void BrowserWindow::keyPressEvent(QKeyEvent *keys)
         case Qt::Key_Escape:
             //QMessageBox::about(NULL,"Key","ESC");
            break;
+        case Qt::Key_F12:
+            QMessageBox::about(NULL,"Key","f12");
+            break;
     }
 }
 

@@ -64,7 +64,8 @@ QUrl commandLineUrlArgument()
         if (!arg.startsWith(QLatin1Char('-')))
             return QUrl::fromUserInput(arg);
     }
-    return QUrl(QStringLiteral("https://www.2345.com/?k82494404"));
+    //入口地址
+    return QUrl(QStringLiteral("https://hlinfo.cc"));
 }
 
 int main(int argc, char **argv)
@@ -73,10 +74,15 @@ int main(int argc, char **argv)
     QCoreApplication::setOrganizationDomain("hlinfo.net");
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QCoreApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+    //支持老显卡设置
+    QCoreApplication::setAttribute(Qt::AA_ShareOpenGLContexts);
+    QGuiApplication::setAttribute(Qt::AA_UseSoftwareOpenGL);
+    QCoreApplication::setAttribute(Qt::AA_UseSoftwareOpenGL);
+    QApplication::setAttribute(Qt::AA_UseSoftwareOpenGL);
 
     QApplication app(argc, argv);
     app.setWindowIcon(QIcon(QStringLiteral(":AppLogo.png")));
-
+    //设置语言
     QLocale locale;
     QTranslator *translator = new QTranslator();
     if(locale.language() == QLocale::Chinese){
