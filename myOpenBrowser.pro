@@ -1,9 +1,6 @@
-include($$QTWEBENGINE_OUT_ROOT/src/core/qtwebenginecore-config.pri) # workaround for QTBUG-68093
-QT_FOR_CONFIG += webenginecore webenginecore-private
-
 TEMPLATE = app
 TARGET = myOpenBrowser
-QT += webenginewidgets printsupport
+QT += core gui axcontainer webenginewidgets network webchannel printsupport
 
 HEADERS += \
     browser.h \
@@ -35,15 +32,22 @@ FORMS += \
     downloadwidget.ui
 
 RESOURCES += \
-    data/myOpenBrowser.qrc \
+    res/myOpenBrowser.qrc \
     i18n/language.qrc
 
 TRANSLATIONS += \
     i18n/en.ts \
     i18n/zh_CN.ts
 
-RC_ICONS = data/AppLogo.ico
+RC_ICONS = res/AppLogo.ico
 
 # install
 target.path = $$[QT_INSTALL_EXAMPLES]/myOpenBrowser
 INSTALLS += target
+
+DESTDIR = ./dist
+
+#windows属性信息资源配置文件(文件编码需为ANSI)
+RC_FILE = ./res/win_res.rc
+
+DISTFILES +=

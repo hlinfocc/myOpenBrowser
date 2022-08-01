@@ -19,6 +19,11 @@
 #include <QAction>
 #include <QFileDialog>
 
+/**
+ * 标签页面
+ * @brief WebView::WebView
+ * @param parent
+ */
 WebView::WebView(QWidget *parent)
     : QWebEngineView(parent)
     , m_loadProgress(100)
@@ -67,25 +72,29 @@ WebView::WebView(QWidget *parent)
     });
 
 }
-
+/**
+ * 页面设置
+ * @brief WebView::setPage
+ * @param page
+ */
 void WebView::setPage(WebPage *page)
 {
-    //设置右键菜单
-    createWebActionTrigger(page,QWebEnginePage::Forward,tr("Forward"));
-    createWebActionTrigger(page,QWebEnginePage::Back,tr("Back"));
-    createWebActionTrigger(page,QWebEnginePage::Reload,tr("Reload"));
-    createWebActionTrigger(page,QWebEnginePage::Stop,tr("Stop"));
-    createWebActionTrigger(page,QWebEnginePage::SavePage,tr("SavePage"));
-    createWebActionTrigger(page,QWebEnginePage::Copy,tr("Copy"));
-    createWebActionTrigger(page,QWebEnginePage::SelectAll,tr("SelectAll"));
-    createWebActionTrigger(page,QWebEnginePage::OpenLinkInNewTab,tr("OpenLinkInNewTab"));
-    createWebActionTrigger(page,QWebEnginePage::OpenLinkInNewWindow,tr("OpenLinkInNewWindow"));
-    createWebActionTrigger(page,QWebEnginePage::CopyImageUrlToClipboard,tr("CopyImageUrlToClipboard"));
-    createWebActionTrigger(page,QWebEnginePage::CopyImageToClipboard,tr("CopyImageToClipboard"));
-    createWebActionTrigger(page,QWebEnginePage::DownloadImageToDisk,tr("DownloadImageToDisk"));
-    createWebActionTrigger(page,QWebEnginePage::CopyLinkToClipboard,tr("CopyLinkToClipboard"));
-    createWebActionTrigger(page,QWebEnginePage::DownloadLinkToDisk,tr("DownloadLinkToDisk"));
-    createWebActionTrigger(page,QWebEnginePage::ViewSource,tr("ViewSource"));
+    //设置页面右键菜单
+    createWebActionTrigger(page,QWebEnginePage::Forward,tr("Forward"));//前进
+    createWebActionTrigger(page,QWebEnginePage::Back,tr("Back"));//后退
+    createWebActionTrigger(page,QWebEnginePage::Reload,tr("Reload"));//刷新
+    createWebActionTrigger(page,QWebEnginePage::Stop,tr("Stop"));//停止
+    createWebActionTrigger(page,QWebEnginePage::SavePage,tr("SavePage"));//保存页面
+    createWebActionTrigger(page,QWebEnginePage::Copy,tr("Copy"));//复制
+    createWebActionTrigger(page,QWebEnginePage::SelectAll,tr("SelectAll"));//全选
+    createWebActionTrigger(page,QWebEnginePage::OpenLinkInNewTab,tr("OpenLinkInNewTab"));//在新标签打开链接
+    createWebActionTrigger(page,QWebEnginePage::OpenLinkInNewWindow,tr("OpenLinkInNewWindow"));//在新窗口打开链接
+    createWebActionTrigger(page,QWebEnginePage::CopyImageUrlToClipboard,tr("CopyImageUrlToClipboard"));//复制图片地址
+    createWebActionTrigger(page,QWebEnginePage::CopyImageToClipboard,tr("CopyImageToClipboard"));//复制图片
+    createWebActionTrigger(page,QWebEnginePage::DownloadImageToDisk,tr("DownloadImageToDisk"));//下载图片
+    createWebActionTrigger(page,QWebEnginePage::CopyLinkToClipboard,tr("CopyLinkToClipboard"));//复制链接
+    createWebActionTrigger(page,QWebEnginePage::DownloadLinkToDisk,tr("DownloadLinkToDisk"));//链接页面另存为
+    createWebActionTrigger(page,QWebEnginePage::ViewSource,tr("ViewSource"));//查看源代码
     QWebEngineView::setPage(page);
 }
 
@@ -93,7 +102,13 @@ int WebView::loadProgress() const
 {
     return m_loadProgress;
 }
-
+/**
+ * 页面触发
+ * @brief WebView::createWebActionTrigger
+ * @param page
+ * @param webAction
+ * @param name
+ */
 void WebView::createWebActionTrigger(QWebEnginePage *page, QWebEnginePage::WebAction webAction,const QString &name)
 {
     QAction *action = page->action(webAction);
@@ -107,7 +122,11 @@ bool WebView::isWebActionEnabled(QWebEnginePage::WebAction webAction) const
 {
     return page()->action(webAction)->isEnabled();
 }
-
+/**
+ * 地址栏图标处理
+ * @brief WebView::favIcon
+ * @return
+ */
 QIcon WebView::favIcon() const
 {
     QIcon favIcon = icon();
@@ -126,6 +145,12 @@ QIcon WebView::favIcon() const
     }
 }
 
+/**
+ * 创建窗口
+ * @brief WebView::createWindow
+ * @param type
+ * @return
+ */
 QWebEngineView *WebView::createWindow(QWebEnginePage::WebWindowType type)
 {
     BrowserWindow *mainWindow = qobject_cast<BrowserWindow*>(window());
@@ -150,7 +175,11 @@ QWebEngineView *WebView::createWindow(QWebEnginePage::WebWindowType type)
     }
     return nullptr;
 }
-
+/**
+ * 页面右键菜单处理，如检查元素（打开浏览器控制台）
+ * @brief WebView::contextMenuEvent
+ * @param event
+ */
 void WebView::contextMenuEvent(QContextMenuEvent *event)
 {
     QMenu *menu = page()->createStandardContextMenu();
@@ -163,6 +192,7 @@ void WebView::contextMenuEvent(QContextMenuEvent *event)
             menu->addSeparator();
 
         QAction *action = new QAction(menu);
+        //在新窗口打开检查
         action->setText(tr("Open inspector in new window"));
         connect(action, &QAction::triggered, [this]() { emit devToolsRequested(page()); });
 

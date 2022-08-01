@@ -10,7 +10,6 @@
 
 Browser::Browser()
 {
-    // Quit application if the download manager window is the only remaining window
     m_downloadManagerWidget.setAttribute(Qt::WA_QuitOnClose, false);
 
     QObject::connect(

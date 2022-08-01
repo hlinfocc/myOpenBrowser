@@ -10,5 +10,9 @@
         <file alias="view-refresh.png">images/view-refresh.png</file>
         <file>AppLogo.png</file>
         <file alias="ninja.png">images/ninja.png</file>
+        <file alias="download-icon.png">images/download.png</file>
+        <file>tabbar.qss</file>
+        <file alias="tab-close.png">images/tab-close.png</file>
+        <file alias="tab-close-hover.png">images/tab-close-hover.png</file>
     </qresource>
 </RCC>

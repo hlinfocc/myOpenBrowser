@@ -46,10 +46,24 @@ int main(int argc, char **argv)
         translator->load(QString(":/zh_CN.qm"));
         app.installTranslator(translator);
     }
-
+    //启用插件
     QWebEngineSettings::defaultSettings()->setAttribute(QWebEngineSettings::PluginsEnabled, true);
+    //启用PDF预览
     QWebEngineSettings::defaultSettings()->setAttribute(QWebEngineSettings::PdfViewerEnabled, true);
+    //启用LocalStorage
+    QWebEngineSettings::defaultSettings()->setAttribute(QWebEngineSettings::LocalStorageEnabled,true);
+    //启用允许JavaScript程序读取和写入剪贴板
+    QWebEngineSettings::defaultSettings()->setAttribute(QWebEngineSettings::JavascriptCanAccessClipboard,true);
+    //true允许本地加载的文档忽略跨源规则
+    QWebEngineSettings::defaultSettings()->setAttribute(QWebEngineSettings::LocalContentCanAccessRemoteUrls,false);
+    //启用全屏支持
+    QWebEngineSettings::defaultSettings()->setAttribute(QWebEngineSettings::FullScreenSupportEnabled,true);
+    //自动加载图片
+    QWebEngineSettings::defaultSettings()->setAttribute(QWebEngineSettings::AutoLoadImages,true);
+    //启用web GL
+    QWebEngineSettings::defaultSettings()->setAttribute(QWebEngineSettings::WebGLEnabled,true);
 #if QT_VERSION >= QT_VERSION_CHECK(5, 13, 0)
+    //启用DNS预加载
     QWebEngineSettings::defaultSettings()->setAttribute(QWebEngineSettings::DnsPrefetchEnabled, true);
     QWebEngineProfile::defaultProfile()->setUseForGlobalCertificateVerification();
 #endif
@@ -64,6 +78,7 @@ int main(int argc, char **argv)
     //window->resize(1024, 768);
     window->showMaximized();
 //    window->showFullScreen();
+    //设置入口地址
     window->tabWidget()->setUrl(url);
     return app.exec();
 }

@@ -23,6 +23,12 @@ TabWidget::TabWidget(QWebEngineProfile *profile, QWidget *parent)
     , m_profile(profile)
 {
     QTabBar *tabBar = this->tabBar();
+    //加载qss,修改tab关闭图标
+    QFile qssFile(QStringLiteral(":tabbar.qss"));
+    if(qssFile.open(QIODevice::ReadOnly | QIODevice::Text)){
+        tabBar->setStyleSheet(qssFile.readAll());
+        qssFile.close();
+    }
     tabBar->setTabsClosable(true);
     tabBar->setSelectionBehaviorOnRemove(QTabBar::SelectPreviousTab);
     tabBar->setMovable(true);
@@ -47,7 +53,11 @@ TabWidget::TabWidget(QWebEngineProfile *profile, QWidget *parent)
                       arg(icon->pixmap()->width()));
     }
 }
-
+/**
+ * 当前页面变化处理
+ * @brief TabWidget::handleCurrentChanged
+ * @param index
+ */
 void TabWidget::handleCurrentChanged(int index)
 {
     if (index != -1) {
@@ -73,28 +83,37 @@ void TabWidget::handleCurrentChanged(int index)
         emit webActionEnabledChanged(QWebEnginePage::Reload, true);
     }
 }
-
+/**
+ * 标签标题处右键菜单
+ * @brief TabWidget::handleContextMenuRequested
+ * @param pos
+ */
 void TabWidget::handleContextMenuRequested(const QPoint &pos)
 {
     QMenu menu;
+    //新建标签
     menu.addAction(tr("New &Tab"), this, &TabWidget::createTab, QKeySequence::AddTab);
     int index = tabBar()->tabAt(pos);
     if (index != -1) {
+        //克隆标签
         QAction *action = menu.addAction(tr("Clone Tab"));
         connect(action, &QAction::triggered, this, [this,index]() {
             cloneTab(index);
         });
         menu.addSeparator();
+        //关闭标签
         action = menu.addAction(tr("&Close Tab"));
         action->setShortcut(QKeySequence::Close);
         connect(action, &QAction::triggered, this, [this,index]() {
             closeTab(index);
         });
+        //关闭其他标签
         action = menu.addAction(tr("Close &Other Tabs"));
         connect(action, &QAction::triggered, this, [this,index]() {
             closeOtherTabs(index);
         });
         menu.addSeparator();
+        //刷新标签
         action = menu.addAction(tr("Reload Tab"));
         action->setShortcut(QKeySequence::Refresh);
         connect(action, &QAction::triggered, this, [this,index]() {
@@ -103,10 +122,15 @@ void TabWidget::handleContextMenuRequested(const QPoint &pos)
     } else {
         menu.addSeparator();
     }
+    //刷新所有标签
     menu.addAction(tr("Reload All Tabs"), this, &TabWidget::reloadAllTabs);
     menu.exec(QCursor::pos());
 }
-
+/**
+ * 当前页面
+ * @brief TabWidget::currentWebView
+ * @return
+ */
 WebView *TabWidget::currentWebView() const
 {
     return webView(currentIndex());
@@ -117,10 +141,15 @@ WebView *TabWidget::webView(int index) const
     return qobject_cast<WebView*>(widget(index));
 }
 
+/**
+ * 页面设置
+ * @brief TabWidget::setupView
+ * @param webView
+ */
 void TabWidget::setupView(WebView *webView)
 {
     QWebEnginePage *webPage = webView->page();
-
+    //标题处理，只显示8个字
     connect(webView, &QWebEngineView::titleChanged, [this, webView](const QString &title) {
         int index = indexOf(webView);
         if (index != -1) {
@@ -149,6 +178,7 @@ void TabWidget::setupView(WebView *webView)
         if (currentIndex() == indexOf(webView))
             emit linkHovered(url);
     });
+    //加载favicon图标
     connect(webView, &WebView::favIconChanged, [this, webView](const QIcon &icon) {
         int index = indexOf(webView);
         if (index != -1)
@@ -173,7 +203,11 @@ void TabWidget::setupView(WebView *webView)
     });
 #endif
 }
-
+/**
+ * 标签标题处右键菜单之创建标签
+ * @brief TabWidget::createTab
+ * @return
+ */
 WebView *TabWidget::createTab()
 {
     WebView *webView = createBackgroundTab();
@@ -194,13 +228,20 @@ WebView *TabWidget::createBackgroundTab()
     webView->show();
     return webView;
 }
-
+/**
+ * 刷新所有标签
+ * @brief TabWidget::reloadAllTabs
+ */
 void TabWidget::reloadAllTabs()
 {
     for (int i = 0; i < count(); ++i)
         webView(i)->reload();
 }
-
+/**
+ * 标签标题处右键菜单之关闭其他标签
+ * @brief TabWidget::closeOtherTabs
+ * @param index
+ */
 void TabWidget::closeOtherTabs(int index)
 {
     for (int i = count() - 1; i > index; --i)
@@ -208,7 +249,11 @@ void TabWidget::closeOtherTabs(int index)
     for (int i = index - 1; i >= 0; --i)
         closeTab(i);
 }
-
+/**
+ * 标签标题处右键菜单之关闭指定标签
+ * @brief TabWidget::closeTab
+ * @param index
+ */
 void TabWidget::closeTab(int index)
 {
     int tabCount = count();
@@ -238,7 +283,11 @@ void TabWidget::closeTab(int index)
         }
     }
 }
-
+/**
+ * 标签标题处右键菜单之克隆标签
+ * @brief TabWidget::cloneTab
+ * @param index
+ */
 void TabWidget::cloneTab(int index)
 {
     if (WebView *view = webView(index)) {
@@ -254,7 +303,11 @@ void TabWidget::setUrl(const QUrl &url)
         view->setFocus();
     }
 }
-
+/**
+ * 页面触发
+ * @brief TabWidget::triggerWebPageAction
+ * @param action
+ */
 void TabWidget::triggerWebPageAction(QWebEnginePage::WebAction action)
 {
     if (WebView *webView = currentWebView()) {
@@ -262,7 +315,10 @@ void TabWidget::triggerWebPageAction(QWebEnginePage::WebAction action)
         webView->setFocus();
     }
 }
-
+/**
+ * 下一个标签
+ * @brief TabWidget::nextTab
+ */
 void TabWidget::nextTab()
 {
     int next = currentIndex() + 1;
@@ -270,7 +326,10 @@ void TabWidget::nextTab()
         next = 0;
     setCurrentIndex(next);
 }
-
+/**
+ * 上一个标签
+ * @brief TabWidget::previousTab
+ */
 void TabWidget::previousTab()
 {
     int next = currentIndex() - 1;
@@ -279,11 +338,20 @@ void TabWidget::previousTab()
     setCurrentIndex(next);
 }
 
+/**
+ * 刷新指定标签
+ * @brief TabWidget::reloadTab
+ * @param index
+ */
 void TabWidget::reloadTab(int index)
 {
     if (WebView *view = webView(index))
         view->reload();
 }
+/**
+ * 打印预览
+ * @brief TabWidget::printPreview
+ */
 void TabWidget::printPreview()
 {
     if (WebView *webView = currentWebView()) {
@@ -292,6 +360,10 @@ void TabWidget::printPreview()
        handler.printPreview();
     }
 }
+/**
+ * 另存为pdf
+ * @brief TabWidget::printToPDF
+ */
 void TabWidget::printToPDF()
 {
     if (WebView *webView = currentWebView()) {

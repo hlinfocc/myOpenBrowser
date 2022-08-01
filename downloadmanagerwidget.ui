@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>212</height>
+    <width>569</width>
+    <height>297</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -55,6 +55,14 @@
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
      </property>
      <widget class="QWidget" name="m_items">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>548</width>
+        <height>293</height>
+       </rect>
+      </property>
       <property name="styleSheet">
        <string notr="true">#m_items {background: palette(mid)}</string>
       </property>

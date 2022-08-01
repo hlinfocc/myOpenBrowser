@@ -115,6 +115,12 @@ QSize BrowserWindow::sizeHint() const
     return size;
 }
 
+/**
+ * 文件菜单
+ * @brief BrowserWindow::createFileMenu
+ * @param tabWidget
+ * @return
+ */
 QMenu *BrowserWindow::createFileMenu(TabWidget *tabWidget)
 {
     QMenu *fileMenu = new QMenu(tr("&File"));
@@ -166,7 +172,11 @@ QMenu *BrowserWindow::createFileMenu(TabWidget *tabWidget)
     });
     return fileMenu;
 }
-
+/**
+ * 编辑菜单
+ * @brief BrowserWindow::createEditMenu
+ * @return
+ */
 QMenu *BrowserWindow::createEditMenu()
 {
     QMenu *editMenu = new QMenu(tr("&Edit"));
@@ -193,6 +203,12 @@ QMenu *BrowserWindow::createEditMenu()
     return editMenu;
 }
 
+/**
+ * 查看菜单
+ * @brief BrowserWindow::createViewMenu
+ * @param toolbar
+ * @return
+ */
 QMenu *BrowserWindow::createViewMenu(QToolBar *toolbar)
 {
     QMenu *viewMenu = new QMenu(tr("&View"));
@@ -261,7 +277,12 @@ QMenu *BrowserWindow::createViewMenu(QToolBar *toolbar)
     viewMenu->addAction(viewStatusbarAction);
     return viewMenu;
 }
-
+/**
+ * 窗口菜单
+ * @brief BrowserWindow::createWindowMenu
+ * @param tabWidget
+ * @return
+ */
 QMenu *BrowserWindow::createWindowMenu(TabWidget *tabWidget)
 {
     QMenu *menu = new QMenu(tr("&Window"));
@@ -302,7 +323,11 @@ QMenu *BrowserWindow::createWindowMenu(TabWidget *tabWidget)
     });
     return menu;
 }
-
+/**
+ * 帮助菜单
+ * @brief BrowserWindow::createHelpMenu
+ * @return
+ */
 QMenu *BrowserWindow::createHelpMenu()
 {
     QMenu *helpMenu = new QMenu(tr("&Help"));
@@ -311,7 +336,11 @@ QMenu *BrowserWindow::createHelpMenu()
     connect(aboutAction, &QAction::triggered, this, &BrowserWindow::about);
     return helpMenu;
 }
-
+/**
+ * 地址栏
+ * @brief BrowserWindow::createToolBar
+ * @return
+ */
 QToolBar *BrowserWindow::createToolBar()
 {
     QToolBar *navigationBar = new QToolBar(tr("Navigation"));
@@ -369,7 +398,7 @@ QToolBar *BrowserWindow::createToolBar()
     navigationBar->addWidget(m_urlLineEdit);
 
     auto downloadsAction = new QAction(this);
-    downloadsAction->setIcon(QIcon(QStringLiteral(":go-bottom.png")));
+    downloadsAction->setIcon(QIcon(QStringLiteral(":download-icon.png")));
     downloadsAction->setToolTip(tr("Show downloads"));
     navigationBar->addAction(downloadsAction);
     connect(downloadsAction, &QAction::triggered, [this]() {
@@ -378,7 +407,12 @@ QToolBar *BrowserWindow::createToolBar()
 
     return navigationBar;
 }
-
+/**
+ * 页面右键刷新等动作
+ * @brief BrowserWindow::handleWebActionEnabledChanged
+ * @param action
+ * @param enabled
+ */
 void BrowserWindow::handleWebActionEnabledChanged(QWebEnginePage::WebAction action, bool enabled)
 {
     switch (action) {
@@ -398,7 +432,11 @@ void BrowserWindow::handleWebActionEnabledChanged(QWebEnginePage::WebAction acti
         qWarning("Unhandled webActionChanged signal");
     }
 }
-
+/**
+ * 浏览器标题处理
+ * @brief BrowserWindow::handleWebViewTitleChanged
+ * @param title
+ */
 void BrowserWindow::handleWebViewTitleChanged(const QString &title)
 {
     QString suffix = m_profile->isOffTheRecord()
@@ -410,19 +448,28 @@ void BrowserWindow::handleWebViewTitleChanged(const QString &title)
     else
         setWindowTitle(title + " - " + suffix);
 }
-
+/**
+ * 处理已触发的新窗口
+ * @brief BrowserWindow::handleNewWindowTriggered
+ */
 void BrowserWindow::handleNewWindowTriggered()
 {
     BrowserWindow *window = m_browser->createWindow();
     window->m_urlLineEdit->setFocus();
 }
-
+/**
+ * 处理已触发的新隐私窗口
+ * @brief BrowserWindow::handleNewIncognitoWindowTriggered
+ */
 void BrowserWindow::handleNewIncognitoWindowTriggered()
 {
     BrowserWindow *window = m_browser->createWindow(/* offTheRecord: */ true);
     window->m_urlLineEdit->setFocus();
 }
-
+/**
+ * 打开文件触发
+ * @brief BrowserWindow::handleFileOpenTriggered
+ */
 void BrowserWindow::handleFileOpenTriggered()
 {
     QUrl url = QFileDialog::getOpenFileUrl(this, tr("Open Web Resource"), QString(),
@@ -431,7 +478,10 @@ void BrowserWindow::handleFileOpenTriggered()
         return;
     currentTab()->setUrl(url);
 }
-
+/**
+ * 当前页面查找处理
+ * @brief BrowserWindow::handleFindActionTriggered
+ */
 void BrowserWindow::handleFindActionTriggered()
 {
     if (!currentTab())
@@ -452,7 +502,11 @@ void BrowserWindow::handleFindActionTriggered()
 #endif
     }
 }
-
+/**
+ * 窗口关闭处理,最后一个标签时候弹出确认提示
+ * @brief BrowserWindow::closeEvent
+ * @param event
+ */
 void BrowserWindow::closeEvent(QCloseEvent *event)
 {
     //if (m_tabWidget->count() > 1) {
@@ -474,12 +528,20 @@ TabWidget *BrowserWindow::tabWidget() const
 {
     return m_tabWidget;
 }
-
+/**
+ * 当前标签
+ * @brief BrowserWindow::currentTab
+ * @return
+ */
 WebView *BrowserWindow::currentTab() const
 {
     return m_tabWidget->currentWebView();
 }
-
+/**
+ * 页面加载进度条
+ * @brief BrowserWindow::handleWebViewLoadProgress
+ * @param progress
+ */
 void BrowserWindow::handleWebViewLoadProgress(int progress)
 {
     static QIcon stopIcon(QStringLiteral(":process-stop.png"));
@@ -497,7 +559,10 @@ void BrowserWindow::handleWebViewLoadProgress(int progress)
         m_progressBar->setValue(0);
     }
 }
-
+/**
+ * 显示窗口触发处理
+ * @brief BrowserWindow::handleShowWindowTriggered
+ */
 void BrowserWindow::handleShowWindowTriggered()
 {
     if (QAction *action = qobject_cast<QAction*>(sender())) {
@@ -507,13 +572,21 @@ void BrowserWindow::handleShowWindowTriggered()
         windows.at(offset)->currentTab()->setFocus();
     }
 }
-
+/**
+ * 开发者工具处理
+ * @brief BrowserWindow::handleDevToolsRequested
+ * @param source
+ */
 void BrowserWindow::handleDevToolsRequested(QWebEnginePage *source)
 {
     source->setDevToolsPage(m_browser->createDevToolsWindow()->currentTab()->page());
     source->triggerAction(QWebEnginePage::InspectElement);
 }
-
+/**
+ * 键盘按键监听
+ * @brief BrowserWindow::keyPressEvent
+ * @param keys
+ */
 void BrowserWindow::keyPressEvent(QKeyEvent *keys)
 {
     //qDebug() << "keyPressEventValue:" << keys->key();
@@ -542,7 +615,9 @@ void BrowserWindow::keyPressEvent(QKeyEvent *keys)
             break;
     }
 }
-
+/**
+ * 查找处理
+ * */
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
 void BrowserWindow::handleFindTextFinished(const QWebEngineFindTextResult &result)
 {
@@ -555,7 +630,10 @@ void BrowserWindow::handleFindTextFinished(const QWebEngineFindTextResult &resul
     }
 }
 #endif
-
+/**
+ * 关于
+ * @brief BrowserWindow::about
+ */
 void BrowserWindow::about()
 {
     QMessageBox::about(this, tr("About"), tr("This openBrowser is simple browser project based on Qt webengine. "

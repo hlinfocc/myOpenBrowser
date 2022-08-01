@@ -1,0 +1,32 @@
+#include <windows.h>
+
+IDI_ICON1               ICON	DISCARDABLE     "AppLogo.ico"
+
+VS_VERSION_INFO VERSIONINFO
+	FILEVERSION 1,0,1,0
+	PRODUCTVERSION 1,0,1,0
+	FILEFLAGSMASK 0x3fL
+	FILEFLAGS 0x0L
+	FILEOS 0x00040004L
+	FILETYPE 0x1L
+	FILESUBTYPE 0x0L
+	BEGIN
+		BLOCK "StringFileInfo"
+		BEGIN
+			BLOCK "080404b0"
+			BEGIN
+				VALUE "CompanyName", "HLINFO\0"
+				VALUE "FileDescription", "QT¼òÒ×ä¯ÀÀÆ÷ÏîÄ¿\0"
+				VALUE "FileVersion", "1.0.1.0\0"
+				VALUE "LegalCopyright", "Copyright (c) 2022 hlinfo.net\0"
+				VALUE "OriginalFilename", "myOpenBrowser.exe\0"
+				VALUE "ProductName", "¼òÒ×ä¯ÀÀÆ÷\0"
+				VALUE "ProductVersion", "1.0.1.0\0"
+			END
+		END
+		BLOCK "VarFileInfo"
+		BEGIN
+			VALUE "Translation", 0x0804, 1200
+		END
+	END
+/* End of Version info */

@@ -15,6 +15,11 @@
 #include <QVBoxLayout>
 #include <QWindow>
 
+/**
+ *
+ * @brief WebPopupWindow::WebPopupWindow
+ * @param profile
+ */
 WebPopupWindow::WebPopupWindow(QWebEngineProfile *profile)
     : m_urlLineEdit(new QLineEdit(this))
     , m_favAction(new QAction(this))

@@ -29,7 +29,12 @@ WebPage::WebPage(QWebEngineProfile *profile, QObject *parent)
     connect(this, &QWebEnginePage::selectClientCertificate, this, &WebPage::handleSelectClientCertificate);
 #endif
 }
-
+/**
+ * 证书错误处理
+ * @brief WebPage::certificateError
+ * @param error
+ * @return
+ */
 bool WebPage::certificateError(const QWebEngineCertificateError &error)
 {
     QWidget *mainWindow = view()->window();
@@ -74,6 +79,12 @@ bool WebPage::certificateError(const QWebEngineCertificateError &error)
 #endif
 }
 
+/**
+ * 处理身份验证
+ * @brief WebPage::handleAuthenticationRequired
+ * @param requestUrl
+ * @param auth
+ */
 void WebPage::handleAuthenticationRequired(const QUrl &requestUrl, QAuthenticator *auth)
 {
     QWidget *mainWindow = view()->window();
@@ -101,7 +112,12 @@ void WebPage::handleAuthenticationRequired(const QUrl &requestUrl, QAuthenticato
         *auth = QAuthenticator();
     }
 }
-
+/**
+ * 功能权限提示，如访问位置提示等
+ * @brief questionForFeature
+ * @param feature
+ * @return
+ */
 inline QString questionForFeature(QWebEnginePage::Feature feature)
 {
     switch (feature) {
@@ -124,7 +140,12 @@ inline QString questionForFeature(QWebEnginePage::Feature feature)
     }
     return QString();
 }
-
+/**
+ * 需要权限处理
+ * @brief WebPage::handleFeaturePermissionRequested
+ * @param securityOrigin
+ * @param feature
+ */
 void WebPage::handleFeaturePermissionRequested(const QUrl &securityOrigin, Feature feature)
 {
     QString title = tr("Permission Request");
@@ -134,7 +155,12 @@ void WebPage::handleFeaturePermissionRequested(const QUrl &securityOrigin, Featu
     else
         setFeaturePermission(securityOrigin, feature, PermissionDeniedByUser);
 }
-
+/**
+ * 代理
+ * @brief WebPage::handleProxyAuthenticationRequired
+ * @param auth
+ * @param proxyHost
+ */
 void WebPage::handleProxyAuthenticationRequired(const QUrl &, QAuthenticator *auth, const QString &proxyHost)
 {
     QWidget *mainWindow = view()->window();
@@ -162,7 +188,9 @@ void WebPage::handleProxyAuthenticationRequired(const QUrl &, QAuthenticator *au
         *auth = QAuthenticator();
     }
 }
-
+/**
+ * 协议处理
+ * */
 //! [registerProtocolHandlerRequested]
 void WebPage::handleRegisterProtocolHandlerRequested(QWebEngineRegisterProtocolHandlerRequest request)
 {
@@ -179,6 +207,9 @@ void WebPage::handleRegisterProtocolHandlerRequested(QWebEngineRegisterProtocolH
 }
 //! [registerProtocolHandlerRequested]
 
+/**
+ * 客户端证书的支持
+ * */
 #if !defined(QT_NO_SSL) || QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
 void WebPage::handleSelectClientCertificate(QWebEngineClientCertificateSelection selection)
 {
